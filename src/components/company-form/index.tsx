@@ -20,10 +20,15 @@ import { formSchema } from "./schema";
 import { useAuth } from "@clerk/nextjs";
 
 export function CompanyForm({
+  id,
   submit,
   defaultValues,
 }: {
-  submit: (userId: string, values: z.infer<typeof formSchema>) => Promise<void>;
+  id: number;
+  submit: (
+    id: number,
+    values: z.infer<typeof formSchema> & { userId: string }
+  ) => Promise<void>;
   defaultValues?: z.infer<typeof formSchema>;
 }) {
   const { userId } = useAuth();
@@ -42,7 +47,7 @@ export function CompanyForm({
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       if (userId) {
-        const res = await submit(userId, values);
+        const res = await submit(id, { ...values, userId });
 
         console.log(res);
         router.push("/profile");
