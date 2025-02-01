@@ -13,7 +13,10 @@ export const getUsersData = async () => {
   return data;
 };
 
-export const addUserData = async (values: z.infer<typeof formSchema>) => {
+export const addUserData = async (
+  userId: string,
+  values: z.infer<typeof formSchema>
+) => {
   const finalData = {
     ...values,
     projectRoles: values.projectRoles.join(",") as string,
@@ -22,27 +25,32 @@ export const addUserData = async (values: z.infer<typeof formSchema>) => {
     programmingLanguages: values.programmingLanguages.join(",") as string,
   };
 
-  await db.insert(userData).values(finalData);
+  await db.insert(userData).values({ ...finalData, userId });
 };
 
 export const deleteUserData = async (userId: string) => {
   await db.delete(userData).where(eq(userData.userId, userId));
 };
 
-export const editUserData = async ({
-  userId,
-  type,
-  description,
-}: {
-  userId: string;
-  type: "person" | "company";
-  description: string;
-}) => {
-  await db
-    .update(userData)
-    .set({
-      type,
-      description,
-    })
-    .where(eq(userData.userId, userId));
+export const editUserData = async (
+  userId: string,
+  values: z.infer<typeof formSchema>
+) => {
+  const finalData = {
+    ...values,
+    projectRoles: values.projectRoles?.length
+      ? values.projectRoles.join(",")
+      : "",
+    projectDomains: values.projectDomains?.length
+      ? values.projectDomains.join(",")
+      : "",
+    spokenLanguages: values.spokenLanguages?.length
+      ? values.spokenLanguages.join(",")
+      : "",
+    programmingLanguages: values.programmingLanguages?.length
+      ? values.programmingLanguages.join(",")
+      : "",
+  };
+
+  await db.update(userData).set(finalData).where(eq(userData.userId, userId));
 };

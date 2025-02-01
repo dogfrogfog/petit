@@ -27,17 +27,17 @@ import { formSchema } from "./schema";
 import { useAuth } from "@clerk/nextjs";
 
 export function ProfileForm({
-  addUserData,
+  submit,
+  defaultValues,
 }: {
-  addUserData: (
-    values: z.infer<typeof formSchema> & { userId: string }
-  ) => Promise<void>;
+  submit: (userId: string, values: z.infer<typeof formSchema>) => Promise<void>;
+  defaultValues?: z.infer<typeof formSchema>;
 }) {
   const { userId } = useAuth();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    defaultValues: defaultValues || {
       name: "",
       lastName: "",
       userName: "",
@@ -53,7 +53,7 @@ export function ProfileForm({
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       if (userId) {
-        const res = await addUserData({ userId, ...values });
+        const res = await submit(userId, values);
 
         console.log(res);
       }
