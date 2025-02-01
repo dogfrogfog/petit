@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-export default async function ProfilePage() {
+export default async function Page() {
   const { userId } = await auth();
   const user = await currentUser();
 
