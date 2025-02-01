@@ -37,15 +37,6 @@ export const projectData = pgTable("projectData", {
   description: text("description").notNull(),
 });
 
-// export const applicationData = pgTable("applicationData", {
-//   id: text("id").primaryKey(),
-//   userId: text("userId").notNull(),
-//   projectId: text("projectId").notNull(),
-//   status: text("status").$type<"open" | "closed">().notNull(), // pending, accepted, rejected
-//   createdAt: timestamp("createdAt").defaultNow().notNull(),
-//   updatedAt: timestamp("updatedAt").defaultNow().notNull(),
-// });
-
 export const vacancyData = pgTable("vacancyData", {
   projectId: text("projectId").notNull(),
   id: text("id").primaryKey(),
