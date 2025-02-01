@@ -21,44 +21,20 @@ import {
   projectDomains,
   projectRoles,
 } from "@/lib/constants";
-import { MultiselectCombobox } from "./ui/multiselect-combobox";
-import { Combobox } from "./ui/combobox";
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  lastName: z.string().min(2, {
-    message: "Last name must be at least 2 characters.",
-  }),
-  userName: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  description: z.string().min(10, {
-    message: "Description must be at least 10 characters.",
-  }),
-  projectRoles: z.array(z.string()).min(1, {
-    message: "Please select at least one project role.",
-  }),
-  projectDomains: z.array(z.string()).min(1, {
-    message: "Please select at least one project domain.",
-  }),
-  expertiseLevel: z.string({
-    required_error: "Please select an expertise level.",
-  }),
-  spokenLanguages: z.array(z.string()).min(1, {
-    message: "Please select at least one language.",
-  }),
-  programmingLanguages: z.array(z.string()).min(1, {
-    message: "Please select at least one programming language.",
-  }),
-});
+import { MultiselectCombobox } from "../ui/multiselect-combobox";
+import { Combobox } from "../ui/combobox";
+import { formSchema } from "./schema";
+import { useAuth } from "@clerk/nextjs";
 
 export function ProfileForm({
   addUserData,
 }: {
-  addUserData: (data: unknown) => Promise<void>;
+  addUserData: (
+    values: z.infer<typeof formSchema> & { userId: string }
+  ) => Promise<void>;
 }) {
+  const { userId } = useAuth();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -75,9 +51,15 @@ export function ProfileForm({
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // This will be type-safe and validated.
-    console.log(values);
-    // await addUserData(values);
+    try {
+      if (userId) {
+        const res = await addUserData({ userId, ...values });
+
+        console.log(res);
+      }
+    } catch {
+      console.log("error submitting form data");
+    }
   }
 
   return (

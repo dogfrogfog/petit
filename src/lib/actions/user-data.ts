@@ -1,5 +1,8 @@
 "use server";
 
+import * as z from "zod";
+import { formSchema } from "@/components/profile-form/schema";
+
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db/drizzle";
 import { userData } from "@/lib/db/schema";
@@ -10,12 +13,16 @@ export const getUsersData = async () => {
   return data;
 };
 
-export const addUserData = async (data: unknown) => {
-  console.log("data121212: ", data);
+export const addUserData = async (values: z.infer<typeof formSchema>) => {
+  const finalData = {
+    ...values,
+    projectRoles: values.projectRoles.join(",") as string,
+    projectDomains: values.projectDomains.join(",") as string,
+    spokenLanguages: values.spokenLanguages.join(",") as string,
+    programmingLanguages: values.programmingLanguages.join(",") as string,
+  };
 
-  return {};
-
-  await db.insert(userData).values(data);
+  await db.insert(userData).values(finalData);
 };
 
 export const deleteUserData = async (userId: string) => {
