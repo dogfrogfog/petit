@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { addCompanyData } from "@/lib/actions/company-data";
 import { eq } from "drizzle-orm";
-import { companyData } from "@/lib/db/schema";
+import { companyData, userData } from "@/lib/db/schema";
 import { db } from "@/lib/db/drizzle";
 
 export default async function Page() {
@@ -11,6 +11,17 @@ export default async function Page() {
 
   if (!userId) {
     redirect("/sign-in");
+  }
+
+  const userDataFromDb = await db
+    .select({
+      id: userData.companyId,
+    })
+    .from(userData)
+    .where(eq(userData.userId, userId));
+
+  if (userDataFromDb.length === 0) {
+    redirect("/profile/personal/create");
   }
 
   const data = await db

@@ -45,6 +45,7 @@ export const companyRelations = relations(companyData, ({ many, one }) => ({
   }),
   vacancies: many(vacancyData),
   applications: many(applicationData),
+  projects: many(projectData),
 }));
 
 export const projectData = pgTable("projectData", {
@@ -54,10 +55,15 @@ export const projectData = pgTable("projectData", {
   name: text("name").notNull(),
   status: text("status").$type<"open" | "closed">().notNull(),
   description: text("description").notNull(),
+  companyId: integer("companyId").notNull(),
 });
 
-export const projectsRelations = relations(projectData, ({ many }) => ({
+export const projectsRelations = relations(projectData, ({ many, one }) => ({
   vacancies: many(vacancyData),
+  company: one(companyData, {
+    fields: [projectData.companyId],
+    references: [companyData.id],
+  }),
 }));
 
 export const vacancyData = pgTable("vacancyData", {

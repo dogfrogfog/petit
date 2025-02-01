@@ -9,6 +9,15 @@ import { companyData } from "@/lib/db/schema";
 import { revalidatePath } from "next/cache";
 import { userData } from "@/lib/db/schema";
 
+export async function getCompanyData(userId: string) {
+  const data = await db
+    .select()
+    .from(companyData)
+    .where(eq(companyData.userId, userId));
+
+  return data;
+}
+
 export const getCompaniesData = async () => {
   const data = await db.select().from(companyData);
 
