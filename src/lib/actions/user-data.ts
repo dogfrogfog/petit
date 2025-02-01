@@ -10,20 +10,12 @@ export const getUsersData = async () => {
   return data;
 };
 
-export const addUserData = async ({
-  userId,
-  type,
-  description,
-}: {
-  userId: string;
-  type: "person" | "company";
-  description: string;
-}) => {
-  await db.insert(userData).values({
-    userId,
-    type,
-    description,
-  });
+export const addUserData = async (data: unknown) => {
+  console.log("data121212: ", data);
+
+  return {};
+
+  await db.insert(userData).values(data);
 };
 
 export const deleteUserData = async (userId: string) => {
