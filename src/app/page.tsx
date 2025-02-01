@@ -1,45 +1,27 @@
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default async function Page() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Main Content */}
-      <main className="flex flex-col items-center justify-center text-center px-4 mt-32">
-        {/* New tool banner */}
-        <div className="bg-black border border-gray-800 rounded-full px-6 py-2 mb-12">
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
-            New tool: Resume Generator
-          </span>
-        </div>
+    <main className="min-h-screen text-foreground flex flex-col items-center justify-center text-center px-4">
+      {/* Hero Text */}
+      <h1 className="text-5xl sm:text-7xl font-serif max-w-4xl mb-12 font-italic">
+        Connect - Collaborate - Create
+      </h1>
 
-        {/* Hero Text */}
-        <h1 className="text-5xl sm:text-7xl font-serif max-w-4xl mb-6">
-          Keep job search active{" "}
-          <span className="italic font-light">doing nothing.</span>
-        </h1>
+      <p className=" text-xl max-w-2xl mb-24">
+        Plump takes care of job searching, application and initial
+        communication, so you can focus on things you love
+      </p>
 
-        <p className="text-gray-400 text-xl max-w-2xl mb-12">
-          Plump takes care of job searching, application and initial
-          communication, so you can focus on things you love
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link
-            href="/get-started"
-            className="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-200 transition-colors"
-          >
-            Get started
-          </Link>
-          <Link
-            href="/jobs"
-            className="border border-gray-800 px-8 py-3 rounded-full hover:bg-gray-900 transition-colors"
-          >
-            Browse jobs
-          </Link>
-        </div>
-      </main>
-    </div>
+      <div className="flex gap-12 items-center justify-center">
+        <Button asChild>
+          <Link href="/profile">Начать</Link>
+        </Button>
+        <Button asChild variant={"secondary"}>
+          <Link href="/jobs">Работа</Link>
+        </Button>
+      </div>
+    </main>
   );
 }

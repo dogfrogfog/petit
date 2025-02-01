@@ -1,6 +1,11 @@
 import { getProjectData } from "@/lib/actions/project-data";
+import {
+  deleteVacancyData,
+  getProjectVacanciesData,
+} from "@/lib/actions/vacancies-data";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { ProjectVacancyCard } from "@/components/project-vacancy-card";
 
 export default async function Page(props: Promise<{ params: { id: string } }>) {
   const params = await props.params;
@@ -11,7 +16,7 @@ export default async function Page(props: Promise<{ params: { id: string } }>) {
   }
 
   const project = await getProjectData(params.id);
-
+  const vacancies = await getProjectVacanciesData(project[0].id);
   const oneProject = project[0];
 
   return (
@@ -40,12 +45,26 @@ export default async function Page(props: Promise<{ params: { id: string } }>) {
         <p className="mt-4 text-gray-600">{oneProject.description}</p>
 
         <div className="mt-6">
-          <a
-            href={`/profile/projects/${oneProject.id}/vacancies/create`}
-            className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
-          >
-            Add Vacancy
-          </a>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-semibold">Vacancies</h2>
+            <a
+              href={`/profile/projects/${oneProject.id}/vacancies/create`}
+              className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
+            >
+              Add Vacancy
+            </a>
+          </div>
+
+          <div className="space-y-4">
+            {vacancies.map((vacancy) => (
+              <ProjectVacancyCard
+                projectId={oneProject.id}
+                key={vacancy.id}
+                vacancy={vacancy}
+                deleteVacancyData={deleteVacancyData}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

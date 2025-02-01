@@ -1,22 +1,18 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 export function HeaderLogin() {
   return (
-    <div>
+    <div className="flex items-center justify-end min-w-20">
       <SignedIn>
-        <UserButton />
+        <div className="flex items-center">
+          <UserButton />
+        </div>
       </SignedIn>
       <SignedOut>
-        <div className="flex gap-4">
-          <SignInButton />
-          <SignUpButton />
-        </div>
+        <SignInButton>
+          <Button variant={"secondary"}>Войти</Button>
+        </SignInButton>
       </SignedOut>
     </div>
   );

@@ -7,6 +7,21 @@ import { vacancyData } from "@/lib/db/schema";
 import { revalidatePath } from "next/cache";
 import { formSchema } from "@/components/vacancy-form/schema";
 
+export async function getVacancy(id: string) {
+  const data = await db
+    .select()
+    .from(vacancyData)
+    .where(eq(vacancyData.id, parseInt(id)));
+
+  return data;
+}
+
+export async function getVacancies() {
+  const data = await db.select().from(vacancyData);
+
+  return data;
+}
+
 export async function getVacancyData(id: number) {
   const data = await db
     .select()
