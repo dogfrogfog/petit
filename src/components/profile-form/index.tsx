@@ -42,6 +42,7 @@ export function ProfileForm({
       lastName: "",
       userName: "",
       description: "",
+      url: "",
       projectRoles: [],
       projectDomains: [],
       expertiseLevel: "",
@@ -119,6 +120,20 @@ export function ProfileForm({
                   className="resize-none"
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>URL</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter your URL" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -10,6 +10,9 @@ export const formSchema = z.object({
   userName: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
+  url: z.string().url({
+    message: "Url must be a valid url.",
+  }),
   description: z.string().min(10, {
     message: "Description must be at least 10 characters.",
   }),

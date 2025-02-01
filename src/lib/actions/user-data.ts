@@ -38,6 +38,7 @@ export const editUserData = async (
 ) => {
   const finalData = {
     ...values,
+    updatedAt: new Date(),
     projectRoles: values.projectRoles?.length
       ? values.projectRoles.join(",")
       : "",
