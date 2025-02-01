@@ -18,13 +18,24 @@ export default async function Page() {
     .from(userData)
     .where(eq(userData.userId, userId));
 
-  console.log("data12121212");
-  console.log(data);
+  if (data.length === 0) {
+    redirect("/profile/create");
+  }
+
+  const userDataFromData = data[0];
+
+  const finalDefaultData = {
+    ...userDataFromData,
+    projectRoles: userDataFromData.projectRoles.split(","),
+    projectDomains: userDataFromData.projectDomains.split(","),
+    spokenLanguages: userDataFromData.spokenLanguages.split(","),
+    programmingLanguages: userDataFromData.programmingLanguages.split(","),
+  };
 
   return (
     <div className="max-w-2xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Profile</h1>
-      <ProfileForm submit={editUserData} />
+      <ProfileForm submit={editUserData} defaultValues={finalDefaultData} />
     </div>
   );
 }

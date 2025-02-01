@@ -225,7 +225,9 @@ export function ProfileForm({
           )}
         />
 
-        <Button type="submit">Save Profile</Button>
+        <Button type="submit">
+          {defaultValues ? "Update" : "Create"} Profile
+        </Button>
       </form>
     </Form>
   );
