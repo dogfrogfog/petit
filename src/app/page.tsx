@@ -2,13 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { HeaderLogin } from "@/components/header-login";
-import { auth } from "@clerk/nextjs/server";
 
 export default async function Page() {
-  const user = await auth();
-
-  console.log(user);
-
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
