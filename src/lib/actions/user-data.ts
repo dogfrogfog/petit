@@ -6,6 +6,7 @@ import { formSchema } from "@/components/profile-form/schema";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db/drizzle";
 import { userData } from "@/lib/db/schema";
+import { revalidatePath } from "next/cache";
 
 export const getUsersData = async () => {
   const data = await db.select().from(userData);
@@ -26,10 +27,14 @@ export const addUserData = async (
   };
 
   await db.insert(userData).values({ ...finalData, userId });
+
+  revalidatePath("/profile");
 };
 
 export const deleteUserData = async (userId: string) => {
   await db.delete(userData).where(eq(userData.userId, userId));
+
+  revalidatePath("/profile");
 };
 
 export const editUserData = async (
@@ -54,4 +59,6 @@ export const editUserData = async (
   };
 
   await db.update(userData).set(finalData).where(eq(userData.userId, userId));
+
+  revalidatePath("/profile");
 };

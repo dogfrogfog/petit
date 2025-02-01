@@ -19,7 +19,7 @@ export default async function Page() {
     .where(eq(userData.userId, userId));
 
   if (data.length === 0) {
-    redirect("/profile/create");
+    redirect("/profile/personal/create");
   }
 
   const userDataFromData = data[0];

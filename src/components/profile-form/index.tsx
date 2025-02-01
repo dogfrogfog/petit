@@ -25,6 +25,7 @@ import { MultiselectCombobox } from "../ui/multiselect-combobox";
 import { Combobox } from "../ui/combobox";
 import { formSchema } from "./schema";
 import { useAuth } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export function ProfileForm({
   submit,
@@ -34,7 +35,7 @@ export function ProfileForm({
   defaultValues?: z.infer<typeof formSchema>;
 }) {
   const { userId } = useAuth();
-
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues || {
@@ -57,6 +58,8 @@ export function ProfileForm({
         const res = await submit(userId, values);
 
         console.log(res);
+
+        router.push("/profile");
       }
     } catch {
       console.log("error submitting form data");
