@@ -68,7 +68,7 @@ export const projectsRelations = relations(projectData, ({ many, one }) => ({
 
 export const vacancyData = pgTable("vacancyData", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  projectId: text("projectId").notNull(),
+  projectId: integer("projectId").notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   name: text("name").notNull(),
@@ -80,7 +80,7 @@ export const vacancyData = pgTable("vacancyData", {
   projectDomains: text("projectDomains").notNull(),
   expertiseLevel: text("expertiseLevel").notNull(),
   location: text("location").notNull(),
-  companyId: text("companyId").notNull(),
+  companyId: integer("companyId").notNull(),
 });
 
 export const vacancyRelations = relations(vacancyData, ({ one, many }) => ({
@@ -100,7 +100,7 @@ export const applicationData = pgTable("applicationData", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().notNull(),
   status: text("status").$type<"pending" | "accepted" | "rejected">().notNull(),
-  companyId: text("companyId").notNull(),
+  companyId: integer("companyId").notNull(),
   vacancyId: text("vacancyId").notNull(),
   userId: text("userId").notNull(),
 });

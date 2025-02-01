@@ -38,6 +38,15 @@ export default async function Page(props: Promise<{ params: { id: string } }>) {
           </div>
         </div>
         <p className="mt-4 text-gray-600">{oneProject.description}</p>
+
+        <div className="mt-6">
+          <a
+            href={`/profile/projects/${oneProject.id}/vacancies/create`}
+            className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
+          >
+            Add Vacancy
+          </a>
+        </div>
       </div>
     </div>
   );
