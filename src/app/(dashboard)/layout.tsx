@@ -7,8 +7,8 @@ export default function Layout({
 }>) {
   return (
     <div className="container py-40">
-      <div className="flex gap-6">
-        <div className="w-80 flex-shrink-0">
+      <div className="flex gap-6 flex-col lg:flex-row">
+        <div className="w-full lg:w-80 flex-shrink-0">
           <DashboardSideNavigation />
         </div>
 

@@ -16,7 +16,19 @@ export default async function Page(props: any) {
 
   const applications = await getProjectApplicationsData(params.id);
 
+  const vacancyApplication = applications.filter(
+    (application) => application.vacancyId === params.vacancyId
+  );
+
   const oneUserData = userData[0];
+
+  if (vacancyApplication.length === 0) {
+    return (
+      <div className="max-w-4xl mx-auto p-4">
+        <p className="text-muted-foreground">Откликов нет</p>
+      </div>
+    );
+  }
 
   if (oneUserData.companyId !== applications[0].companyId) {
     redirect("/dashboard/projects");
@@ -26,11 +38,11 @@ export default async function Page(props: any) {
     <div>
       <div className="max-w-4xl mx-auto p-4">
         <h1 className="text-2xl font-bold mb-6">Отклики на вакансию</h1>
-        {applications.length === 0 ? (
+        {vacancyApplication.length === 0 ? (
           <p className="text-muted-foreground">Откликов нет</p>
         ) : (
           <div className="space-y-4">
-            {applications.map(async (application) => {
+            {vacancyApplication.map(async (application) => {
               const applicant = await getUserData(application.userId);
               const oneApplicant = applicant[0];
 

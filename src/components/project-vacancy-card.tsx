@@ -4,7 +4,10 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { Card, CardHeader, CardContent, CardFooter } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { DollarSign, MapPin } from "lucide-react";
+import {
+  // DollarSign,
+  MapPin,
+} from "lucide-react";
 
 export function ProjectVacancyCard({
   projectId,
@@ -27,7 +30,7 @@ export function ProjectVacancyCard({
   deleteVacancyData?: (id: number) => void;
 }) {
   return (
-    <Card className="dark">
+    <Card className="dark overflow-hidden">
       <CardHeader className="flex flex-wrap flex-row justify-between items-center gap-2 space-y-0">
         <div className="gap-2 items-center flex">
           <p className="font-semibold text-md">{vacancy.name}</p>
@@ -41,7 +44,7 @@ export function ProjectVacancyCard({
         </Badge>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-2">
           {vacancy.projectDomains?.split(",").map((domain) => (
             <Badge variant="outline" key={domain}>
               <p className="text-sm text-muted-foreground">{domain}</p>
@@ -59,10 +62,10 @@ export function ProjectVacancyCard({
               {vacancy.expertiseLevel}
             </p>
           </Badge>
-          <div className="flex items-center gap-1">
+          {/* <div className="flex items-center gap-1">
             <DollarSign className="size-4" />
             {vacancy.salary}
-          </div>
+          </div> */}
           <div className="flex items-center gap-1">
             <MapPin className="size-4" />
             {vacancy.location}
@@ -87,7 +90,7 @@ export function ProjectVacancyCard({
         )}
       </CardContent>
       {deleteVacancyData && (
-        <CardFooter className="flex justify-end gap-2">
+        <CardFooter className="flex flex-wrap justify-end gap-2">
           <Button className="bg-yellow-500" asChild>
             <Link
               href={`/dashboard/projects/${projectId}/vacancies/${vacancy.id}/applications`}

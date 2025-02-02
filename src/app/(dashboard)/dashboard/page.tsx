@@ -1,3 +1,3 @@
 export default function Component() {
-  return <div>dash</div>;
+  return <div>Добро пожаловать в ваш личный кабинет</div>;
 }

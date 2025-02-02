@@ -16,7 +16,7 @@ export function VacancyFilters() {
   const [selectedExpertiseLevels, setSelectedExpertiseLevels] = useState<
     string[]
   >([]);
-  const [selectedSalary, setSelectedSalary] = useState<string>("");
+  // const [selectedSalary, setSelectedSalary] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<string>("");
 
   const handleStatusChange = (value: string[]) => {
@@ -35,9 +35,9 @@ export function VacancyFilters() {
     setSelectedExpertiseLevels(value);
   };
 
-  const handleSalaryChange = (value: string) => {
-    setSelectedSalary(value);
-  };
+  // const handleSalaryChange = (value: string) => {
+  //   setSelectedSalary(value);
+  // };
 
   const handleLocationChange = (value: string) => {
     setSelectedLocation(value);
@@ -62,14 +62,14 @@ export function VacancyFilters() {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label className="text-sm font-medium">Зарплата</label>
             <Input
               placeholder="Введите зарплату"
               value={selectedSalary}
               onChange={(e) => handleSalaryChange(e.target.value)}
             />
-          </div>
+          </div> */}
 
           <div>
             <label className="text-sm font-medium">Местоположение</label>

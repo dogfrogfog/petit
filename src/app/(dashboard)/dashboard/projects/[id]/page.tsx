@@ -52,6 +52,7 @@ export default async function Page(props: any) {
       </div>
 
       <div className="rounded-lg border p-6">
+        <p className="text-sm font-semibold">Описание проекта</p>
         <p className="text-muted-foreground">{oneProject.description}</p>
 
         <div className="mt-6">
@@ -65,7 +66,7 @@ export default async function Page(props: any) {
             </a>
           </div>
 
-          <div className="grid gap-4">
+          <div className="space-y-4">
             {vacancies.map((vacancy) => (
               <div key={vacancy.id}>
                 <ProjectVacancyCard

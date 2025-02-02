@@ -17,7 +17,6 @@ export default async function Page() {
   }
 
   const oneCommpany = company[0];
-
   const projects = await getCompanyProjectsData(oneCommpany.id);
 
   return (
