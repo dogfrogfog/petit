@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default async function Page() {
   return (
-    <main className="pt-32 min-h-screen text-foreground flex flex-col items-center justify-center text-center px-4">
+    <main className="pt-12 text-foreground flex flex-col items-center justify-center text-center px-4">
       {/* Hero Text */}
       <h1 className="text-5xl sm:text-7xl font-serif max-w-4xl mb-6 lg:mb-12 font-italic">
         Connect - Collaborate - Create

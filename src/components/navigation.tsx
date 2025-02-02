@@ -6,7 +6,7 @@ import { HeaderLogin } from "@/components/header-login";
 
 export function Navigation() {
   return (
-    <nav className="border-foreground border rounded-xl w-full lg:w-[900px] bg-background text-foreground fixed top-2 lg:top-10 left-1/2 -translate-x-1/2">
+    <nav className="mt-4 border-foreground border rounded-xl w-[98%] bg-background text-foreground mx-auto">
       <div className="flex flex-row items-center justify-between px-4 md:px-8 py-4 gap-4 md:gap-4">
         <Link href="/" className="h-10 w-7 flex items-center justify-center">
           <Image src="/logo.png" alt="Logo" width={27} height={35} />
