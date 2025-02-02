@@ -7,7 +7,8 @@ import { getUserData } from "@/lib/actions/user-data";
 import { addApplicationData } from "@/lib/actions/application-data";
 import { auth } from "@clerk/nextjs/server";
 
-export default async function Page(props: Promise<{ params: { id: string } }>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function Page(props: any) {
   const { userId } = await auth();
 
   const params = (await props).params;

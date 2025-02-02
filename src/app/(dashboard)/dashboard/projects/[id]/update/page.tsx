@@ -4,7 +4,8 @@ import { getCompanyData } from "@/lib/actions/company-data";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-export default async function Page(props: Promise<{ params: { id: string } }>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function Page(props: any) {
   const params = (await props).params;
   const { userId } = await auth();
 
