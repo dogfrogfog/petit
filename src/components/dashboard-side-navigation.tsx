@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function DashboardSideNavigation() {
   return (
-    <div className="dark">
+    <div className="">
       <div className="flex flex-col gap-2 bg-background rounded-xl">
         <div className="p-4">
           <nav className="flex flex-col gap-2">

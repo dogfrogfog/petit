@@ -33,7 +33,7 @@ export function ApplyCard({
   }
 
   return (
-    <Card className="dark pt-6">
+    <Card className=" pt-6">
       <CardContent className="flex justify-between items-center">
         <Button variant="destructive" asChild>
           <a href={`mailto:report.retired451@passmail.net`}>

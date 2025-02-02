@@ -44,7 +44,7 @@ export function VacancyFilters() {
   };
 
   return (
-    <Card className="dark">
+    <Card className="">
       <CardHeader>
         <CardTitle>Настройки поиска</CardTitle>
       </CardHeader>

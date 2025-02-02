@@ -24,7 +24,7 @@ export default async function Page(props: any) {
   return (
     <div className="space-y-4">
       <ProjectVacancyCard vacancy={oneVacancy} projectId={oneProject.id} />
-      <Card className="dark">
+      <Card className="">
         <CardHeader>
           <CardTitle>Проект</CardTitle>
         </CardHeader>

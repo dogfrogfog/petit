@@ -62,7 +62,6 @@ export const programmingLanguages = [
   "Objective-C",
   "Scala",
   "Haskell",
-  "Erlang",
   "Zig",
   "Elixir",
   "Erlang",
