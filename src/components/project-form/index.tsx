@@ -65,9 +65,9 @@ export function ProjectForm({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Name</FormLabel>
+              <FormLabel>Название проекта</FormLabel>
               <FormControl>
-                <Input placeholder="Enter project name" {...field} />
+                <Input placeholder="Введите название проекта" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -79,10 +79,10 @@ export function ProjectForm({
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Описание проекта</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Tell us about yourself"
+                  placeholder="Описание проекта"
                   className="resize-none"
                   {...field}
                 />
@@ -97,7 +97,7 @@ export function ProjectForm({
           name="status"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Status</FormLabel>
+              <FormLabel>Статус проекта</FormLabel>
               <FormControl>
                 <Combobox
                   options={["open", "closed"].map((v) => ({
@@ -113,7 +113,7 @@ export function ProjectForm({
         />
 
         <Button type="submit">
-          {defaultValues ? "Update" : "Create"} project
+          {defaultValues ? "Обновить" : "Создать"} проект
         </Button>
       </form>
     </Form>

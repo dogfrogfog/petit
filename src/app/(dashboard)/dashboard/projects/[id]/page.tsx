@@ -10,7 +10,7 @@ import { getCompanyData } from "@/lib/actions/company-data";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Page(props: any) {
-  const params = (await props).params;
+  const params = await props.params;
   const { userId } = await auth();
 
   if (!userId) {

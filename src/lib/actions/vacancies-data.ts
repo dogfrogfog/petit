@@ -71,7 +71,17 @@ export const editVacancyData = async (
     updatedAt: new Date(),
   };
 
-  await db.update(vacancyData).set(finalData).where(eq(vacancyData.id, id));
+  console.log("finalData");
+  console.log(id, finalData);
+
+  const result = await db
+    .update(vacancyData)
+    .set(finalData)
+    .where(eq(vacancyData.id, id))
+    .returning();
+
+  console.log("result");
+  console.log(result);
 
   revalidatePath("/dashboard/projects");
 };

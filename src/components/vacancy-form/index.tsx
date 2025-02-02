@@ -25,6 +25,7 @@ export function VacancyForm({
   companyId,
   submit,
   defaultValues,
+  id,
 }: {
   id: number;
   projectId: number;
@@ -58,7 +59,7 @@ export function VacancyForm({
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       if (userId) {
-        const res = await submit(projectId, {
+        const res = await submit(id, {
           ...values,
           projectId,
           companyId,
@@ -79,9 +80,9 @@ export function VacancyForm({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Vacancy Name</FormLabel>
+              <FormLabel>Название вакансии</FormLabel>
               <FormControl>
-                <Input placeholder="Enter vacancy name" {...field} />
+                <Input placeholder="Введите название вакансии" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -93,10 +94,10 @@ export function VacancyForm({
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Описание вакансии</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Describe the vacancy"
+                  placeholder="Описание вакансии"
                   className="resize-none"
                   {...field}
                 />
@@ -111,10 +112,10 @@ export function VacancyForm({
           name="requirements"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Requirements</FormLabel>
+              <FormLabel>Требования</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="List the requirements"
+                  placeholder="Список требований"
                   className="resize-none"
                   {...field}
                 />
@@ -129,7 +130,7 @@ export function VacancyForm({
           name="status"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Status</FormLabel>
+              <FormLabel>Статус вакансии</FormLabel>
               <FormControl>
                 <Combobox
                   options={["open", "closed"].map((v) => ({
@@ -149,9 +150,9 @@ export function VacancyForm({
           name="salary"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Salary</FormLabel>
+              <FormLabel>Зарплата</FormLabel>
               <FormControl>
-                <Input placeholder="Enter salary" {...field} />
+                <Input placeholder="Введите зарплату" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -163,7 +164,7 @@ export function VacancyForm({
           name="projectRoles"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Role</FormLabel>
+              <FormLabel>Роль в проекте</FormLabel>
               <FormControl>
                 <Combobox
                   options={projectRoles.map((role) => ({
@@ -183,7 +184,7 @@ export function VacancyForm({
           name="projectDomains"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Domain</FormLabel>
+              <FormLabel>Сфера проекта</FormLabel>
               <FormControl>
                 <Combobox
                   options={projectDomains.map((domain) => ({
@@ -203,7 +204,7 @@ export function VacancyForm({
           name="expertiseLevel"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Expertise Level</FormLabel>
+              <FormLabel>Уровень экспертизы</FormLabel>
               <FormControl>
                 <Combobox
                   options={expertiseLevels.map((level) => ({
@@ -223,9 +224,9 @@ export function VacancyForm({
           name="location"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Location</FormLabel>
+              <FormLabel>Местоположение</FormLabel>
               <FormControl>
-                <Input placeholder="Enter location" {...field} />
+                <Input placeholder="Введите местоположение" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

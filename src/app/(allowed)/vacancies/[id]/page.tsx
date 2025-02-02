@@ -11,7 +11,7 @@ import { auth } from "@clerk/nextjs/server";
 export default async function Page(props: any) {
   const { userId } = await auth();
 
-  const params = (await props).params;
+  const params = await props.params;
 
   const vacancy = await getVacancy(params.id);
   const oneVacancy = vacancy[0];

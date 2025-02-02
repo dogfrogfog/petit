@@ -119,7 +119,7 @@ export function ProfileForm({
               <FormLabel>Description</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Tell us about yourself"
+                  placeholder="Расскажи о себе"
                   className="resize-none"
                   {...field}
                 />
