@@ -10,10 +10,5 @@ export const formSchema = z.object({
   description: z.string().min(1, {
     message: "Please enter a description.",
   }),
-  url: z
-    .string()
-    .url({
-      message: "Please enter a valid url.",
-    })
-    .optional(),
+  url: z.string().optional(),
 });
