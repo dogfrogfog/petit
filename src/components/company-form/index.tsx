@@ -50,7 +50,7 @@ export function CompanyForm({
         const res = await submit(id, { ...values, userId });
 
         console.log(res);
-        router.push("/profile");
+        router.push("/dashboard/company");
       }
     } catch {
       console.log("error submitting form data");

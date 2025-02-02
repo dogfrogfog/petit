@@ -53,13 +53,13 @@ export const addVacancyData = async (
 
   await db.insert(vacancyData).values(finalData);
 
-  revalidatePath("/profile/projects");
+  revalidatePath("/dashboard/projects");
 };
 
 export const deleteVacancyData = async (id: number) => {
   await db.delete(vacancyData).where(eq(vacancyData.id, id));
 
-  revalidatePath("/profile/projects");
+  revalidatePath("/dashboard/projects");
 };
 
 export const editVacancyData = async (
@@ -73,5 +73,5 @@ export const editVacancyData = async (
 
   await db.update(vacancyData).set(finalData).where(eq(vacancyData.id, id));
 
-  revalidatePath("/profile/projects");
+  revalidatePath("/dashboard/projects");
 };

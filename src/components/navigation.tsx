@@ -18,6 +18,9 @@ export function Navigation() {
       <Link href="/contact" className="text-gray-300 hover:text-white">
         Контакты
       </Link>
+      <Link href="/dashboard" className="text-gray-300 hover:text-white">
+        Дашборд
+      </Link>
       <HeaderLogin />
     </nav>
   );

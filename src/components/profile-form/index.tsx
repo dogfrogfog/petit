@@ -59,7 +59,7 @@ export function ProfileForm({
 
         console.log(res);
 
-        router.push("/profile");
+        router.push("/dashboard/profile");
       }
     } catch {
       console.log("error submitting form data");

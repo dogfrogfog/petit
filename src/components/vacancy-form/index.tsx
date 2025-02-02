@@ -64,7 +64,7 @@ export function VacancyForm({
           companyId,
         });
         console.log(res);
-        router.push(`/profile/projects/${projectId}`);
+        router.push(`/dashboard/projects/${projectId}`);
       }
     } catch {
       console.log("error submitting form data");

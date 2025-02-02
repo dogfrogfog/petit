@@ -88,18 +88,25 @@ export function ProjectVacancyCard({
       </CardContent>
       {deleteVacancyData && (
         <CardFooter className="flex justify-end gap-2">
+          <Button className="bg-yellow-500" asChild>
+            <Link
+              href={`/dashboard/projects/${projectId}/vacancies/${vacancy.id}/applications`}
+            >
+              Отклики на вакансию
+            </Link>
+          </Button>
           <Button variant="outline" asChild>
             <Link
-              href={`/profile/projects/${projectId}/vacancies/${vacancy.id}/update`}
+              href={`/dashboard/projects/${projectId}/vacancies/${vacancy.id}/update`}
             >
-              Edit
+              Изменить
             </Link>
           </Button>
           <Button
             variant="destructive"
             onClick={() => deleteVacancyData(vacancy.id)}
           >
-            Delete
+            Удалить
           </Button>
         </CardFooter>
       )}

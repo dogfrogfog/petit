@@ -8,8 +8,11 @@ import { db } from "@/lib/db/drizzle";
 import { userData } from "@/lib/db/schema";
 import { revalidatePath } from "next/cache";
 
-export const getUsersData = async () => {
-  const data = await db.select().from(userData);
+export const getUserData = async (userId: string) => {
+  const data = await db
+    .select()
+    .from(userData)
+    .where(eq(userData.userId, userId));
 
   return data;
 };
@@ -28,13 +31,13 @@ export const addUserData = async (
 
   await db.insert(userData).values({ ...finalData, userId });
 
-  revalidatePath("/profile");
+  revalidatePath("/dashboard/profile");
 };
 
 export const deleteUserData = async (userId: string) => {
   await db.delete(userData).where(eq(userData.userId, userId));
 
-  revalidatePath("/profile");
+  revalidatePath("/dashboard/profile");
 };
 
 export const editUserData = async (
@@ -60,5 +63,5 @@ export const editUserData = async (
 
   await db.update(userData).set(finalData).where(eq(userData.userId, userId));
 
-  revalidatePath("/profile");
+  revalidatePath("/dashboard/profile");
 };

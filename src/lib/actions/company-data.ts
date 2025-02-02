@@ -43,13 +43,13 @@ export const addCompanyData = async (
     .set({ companyId: newCompany.id })
     .where(eq(userData.userId, values.userId));
 
-  revalidatePath("/profile");
+  revalidatePath("/dashboard/company");
 };
 
 export const deleteCompanyData = async (id: number) => {
   await db.delete(companyData).where(eq(companyData.id, id));
 
-  revalidatePath("/profile");
+  revalidatePath("/dashboard/company");
 };
 
 export const editCompanyData = async (
@@ -64,5 +64,5 @@ export const editCompanyData = async (
 
   await db.update(companyData).set(finalData).where(eq(companyData.id, id));
 
-  revalidatePath("/profile");
+  revalidatePath("/dashboard/company");
 };

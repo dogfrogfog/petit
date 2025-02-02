@@ -36,13 +36,13 @@ export const addProjectData = async (
 
   await db.insert(projectData).values(finalData);
 
-  revalidatePath("/profile/projects");
+  revalidatePath("/dashboard/projects");
 };
 
 export const deleteProjectData = async (id: number) => {
   await db.delete(projectData).where(eq(projectData.id, id));
 
-  revalidatePath("/profile/projects");
+  revalidatePath("/dashboard/projects");
 };
 
 export const editProjectData = async (
@@ -54,16 +54,11 @@ export const editProjectData = async (
     updatedAt: new Date(),
   };
 
-  console.log("ididididiididid: ", id);
-  console.log("finalDatafinalDatafinalData: ", finalData);
-
-  const a = await db
+  await db
     .update(projectData)
     .set(finalData)
     .where(eq(projectData.id, id))
     .returning({ companyId: projectData.companyId });
 
-  console.log("a_________", a);
-
-  revalidatePath("/profile/projects");
+  revalidatePath("/dashboard/projects");
 };

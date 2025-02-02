@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export function HeaderLogin() {
   return (
-    <div className="flex items-center justify-end min-w-20">
+    <div className="flex items-center justify-end">
       <SignedIn>
         <div className="flex items-center">
           <UserButton />
