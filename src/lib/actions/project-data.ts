@@ -25,6 +25,12 @@ export const getCompanyProjectsData = async (companyId: number) => {
   return data;
 };
 
+export const getProjectsData = async () => {
+  const data = await db.select().from(projectData);
+
+  return data;
+};
+
 export const addProjectData = async (
   id: number,
   values: z.infer<typeof formSchema> & { companyId: number }

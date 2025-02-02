@@ -4,7 +4,7 @@ export default async function Page() {
   const companies = await getCompaniesData();
 
   return (
-    <div className="space-y-4 flex-1 px-4 md:px-6 max-w-7xl mx-auto w-full py-40 max-w-2xl">
+    <div className="space-y-4 flex-1 px-4 md:px-6 mx-auto w-full py-40 max-w-2xl">
       <h1 className="text-lg sm:text-xl font-semibold">Компании</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {companies.map((company) => (

@@ -29,9 +29,10 @@ export default async function Page(props: any) {
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Update project</h1>
+      <h1 className="text-2xl font-bold mb-4">Обновить проект</h1>
       <ProjectForm
-        defaultValues={oneProject}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        defaultValues={oneProject as any}
         submit={editProjectData}
         id={params.id}
         companyId={oneCommpany.id}

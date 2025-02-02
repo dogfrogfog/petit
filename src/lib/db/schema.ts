@@ -55,6 +55,7 @@ export const projectData = pgTable("projectData", {
   name: text("name").notNull(),
   status: text("status").$type<"open" | "closed">().notNull(),
   description: text("description").notNull(),
+  url: text("url"),
   companyId: integer("companyId").notNull(),
 });
 

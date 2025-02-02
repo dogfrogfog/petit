@@ -4,15 +4,14 @@ import Link from "next/link";
 
 export default async function Page() {
   return (
-    <main className="pt-12 text-foreground flex flex-col items-center justify-center text-center px-4">
+    <main className="pt-24 text-foreground flex flex-col items-center justify-center text-center px-4">
       {/* Hero Text */}
       <h1 className="text-5xl sm:text-7xl font-serif max-w-4xl mb-6 lg:mb-12 font-italic">
-        Connect - Collaborate - Create
+        Что это такое <span className="text-green-600">Pet.it</span>?
       </h1>
 
       <p className=" text-xl max-w-2xl mb-6 lg:mb-24">
-        Lorem ipsum is placeholder text commonly used in the graphic, print, and
-        publishing industries for previewing layouts and visual mockups.
+        платформа для формирования команд и реализации ИТ проектов
       </p>
 
       <div className="flex gap-12 items-center justify-center mb-12">
@@ -20,7 +19,7 @@ export default async function Page() {
           <Link href="/dashboard/profile">Начать</Link>
         </Button>
         <Button asChild variant={"secondary"}>
-          <Link href="/jobs">Работа</Link>
+          <Link href="/projects">Проекты</Link>
         </Button>
       </div>
       <HeroChangingMockProjects />

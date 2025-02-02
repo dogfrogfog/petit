@@ -41,6 +41,7 @@ export function ProjectForm({
       name: "",
       status: "open",
       description: "",
+      url: "",
     },
   });
 
@@ -106,6 +107,20 @@ export function ProjectForm({
                   }))}
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Ссылка на проект</FormLabel>
+              <FormControl>
+                <Input placeholder="Введите ссылку на проект" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

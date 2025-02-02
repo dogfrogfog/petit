@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ProjectVacancyCard } from "./project-vacancy-card";
+import { ProjectCard } from "./project-card";
 
 export function HeroChangingMockProjects() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -62,10 +62,7 @@ export function HeroChangingMockProjects() {
   return (
     <div className="lg:w-[600px] mx-auto">
       <div className="transition-opacity duration-500 ease-in-out">
-        <ProjectVacancyCard
-          projectId={1}
-          vacancy={mockProjects[currentIndex]}
-        />
+        <ProjectCard project={mockProjects[currentIndex]} />
       </div>
     </div>
   );
