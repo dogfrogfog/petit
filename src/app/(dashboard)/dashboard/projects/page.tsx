@@ -1,6 +1,4 @@
-// import { getCompanyProjectsData } from "@/lib/actions/project-data";
-// import { getCompanyData } from "@/lib/actions/company-data";
-import { getCompanyWithProjects } from "@/lib/actions/company-project-data";
+import { getCompanyData } from "@/lib/actions/company-data";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -11,15 +9,7 @@ export default async function Page() {
     redirect("/sign-in");
   }
 
-  // const company = await getCompanyData(userId);
-
-  // if (company.length === 0) {
-  //   redirect("/dashboard/company/create");
-  // }
-
-  // const oneCommpany = company[0];
-  // const projects = await getCompanyProjectsData(oneCommpany.id);
-  const { company, projects } = await getCompanyWithProjects(userId);
+  const { company, projects } = await getCompanyData(userId, true);
 
   if (!company) {
     redirect("/dashboard/company/create");
