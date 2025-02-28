@@ -123,3 +123,4 @@ export async function deleteCompanyWithProjects(companyId: number) {
   revalidatePath("/dashboard/company");
   revalidatePath("/dashboard/projects");
 }
+// test
