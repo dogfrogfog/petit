@@ -11,4 +11,5 @@ export const formSchema = z.object({
     message: "Please enter a description.",
   }),
   url: z.string().optional(),
+  maxParticipants: z.number().int().positive(),
 });

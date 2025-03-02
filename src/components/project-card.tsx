@@ -1,40 +1,45 @@
 "use client";
 
-import { Card, CardHeader, CardContent } from "./ui/card";
-// import { Badge } from "./ui/badge";
+import Image from "next/image";
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "./ui/card";
+import { ProjectData } from "@/lib/actions/project-data";
+import { Badge } from "./ui/badge";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function ProjectCard({ project }: { project: any }) {
+export function ProjectCard({
+  project,
+}: {
+  /** @todo: разобраться в бд с tags,currentParticipants,maxParticipants */
+  project: ProjectData & { tags: string[]; currentParticipants: number; maxParticipants: number };
+}) {
   return (
-    <Card className="overflow-hidden">
-      <CardHeader className="flex flex-wrap flex-row justify-between gap-2 space-y-0">
-        <div className="gap-2 items-center flex">
-          <p className="font-semibold text-md">{project.name}</p>
-        </div>
-        {/* <Badge
-          variant={project.status === "open" ? "success" : "destructive"}
-          className="capitalize"
-        >
-          {project.status}
-        </Badge> */}
-      </CardHeader>
-      <CardContent className="space-y-4 text-left">
-        {project.url && (
-          <div className="space-y-0">
-            <p className="text-sm">Ссылка на проект</p>
-            <p className="text-sm text-muted-foreground">
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                {project.url}
-              </a>
-            </p>
+    <Card className="flex items-center gap-4 px-3">
+      <Image
+        className="shrink-0 rounded-full"
+        src={project.logo || "/project-logo.png"}
+        alt=""
+        width={68}
+        height={68}
+      />
+      <div className="flex flex-col gap-2">
+        <CardHeader className="text-start">
+          <CardTitle>{project.name}</CardTitle>
+          {project.url && <CardDescription className="truncate">{project.url}</CardDescription>}
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          <p className="line-clamp-2 text-start text-xs font-normal text-zinc-500">{project.description}</p>
+          <div className="flex gap-2">
+            {/** @todo: убрать .?, когда будет понятно что делать с tags */}
+            {project.tags?.map((item, idx) => <Badge key={idx}>{item}</Badge>)}
           </div>
-        )}
-
-        <div className="space-y-0">
-          <p className="text-sm">Описание</p>
-          <p className="text-sm text-muted-foreground">{project.description}</p>
-        </div>
-      </CardContent>
+        </CardContent>
+      </div>
+      <div className="flex shrink-0 flex-col gap-1.5">
+        <Image src="/users.png" alt="Member count for the project" width={24} height={24} />
+        <span className="text-xs">
+          {/** @todo: убрать 0, когда будет понятно что делать с currentParticipants */}
+          {project.currentParticipants || 0} / {project.maxParticipants}
+        </span>
+      </div>
     </Card>
   );
 }
