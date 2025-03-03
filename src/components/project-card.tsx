@@ -4,18 +4,18 @@ import Image from "next/image";
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "./ui/card";
 import { ProjectData } from "@/lib/actions/project-data";
 import { Badge } from "./ui/badge";
+import { UsersRound } from "lucide-react";
 
-export function ProjectCard({
-  project,
-}: {
-  /** @todo: разобраться в бд с tags,currentParticipants,maxParticipants */
-  project: ProjectData & { tags: string[]; currentParticipants: number; maxParticipants: number };
-}) {
+type ProjectCardProps = {
+  project: ProjectData;
+};
+
+export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="flex items-center gap-4 px-3">
       <Image
         className="shrink-0 rounded-full"
-        src={project.logo || "/project-logo.png"}
+        src={project.logo || "/project-logo.webp"}
         alt=""
         width={68}
         height={68}
@@ -33,7 +33,7 @@ export function ProjectCard({
         </CardContent>
       </div>
       <div className="flex shrink-0 flex-col gap-1.5">
-        <Image src="/users.png" alt="Member count for the project" width={24} height={24} />
+        <UsersRound />
         <span className="text-xs">{0 / 0}</span>
       </div>
     </Card>
