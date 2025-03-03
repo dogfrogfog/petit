@@ -58,11 +58,7 @@ export const projectData = pgTable("projectData", {
   url: text("url"),
   companyId: integer("companyId").notNull(),
   logo: text("projectLogo"),
-  /** @todo */
-  // tags: text("projectTags").array().notNull(),
-  // currentParticipants: integer("currentParticipants").notNull(),
-  /** @todo: не уверен насчет maxParticipants - мб это надо брать из projectsRelations.vacancies */
-  maxParticipants: integer("maxParticipants").notNull(),
+  domain: text("domain").notNull(),
 });
 
 export const projectsRelations = relations(projectData, ({ many, one }) => ({
