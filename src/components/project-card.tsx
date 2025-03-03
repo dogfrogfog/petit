@@ -28,17 +28,13 @@ export function ProjectCard({
         <CardContent className="flex flex-col gap-2">
           <p className="line-clamp-2 text-start text-xs font-normal text-zinc-500">{project.description}</p>
           <div className="flex gap-2">
-            {/** @todo: убрать .?, когда будет понятно что делать с tags */}
-            {project.tags?.map((item, idx) => <Badge key={idx}>{item}</Badge>)}
+            <Badge>{project.domain}</Badge>
           </div>
         </CardContent>
       </div>
       <div className="flex shrink-0 flex-col gap-1.5">
         <Image src="/users.png" alt="Member count for the project" width={24} height={24} />
-        <span className="text-xs">
-          {/** @todo: убрать 0, когда будет понятно что делать с currentParticipants */}
-          {project.currentParticipants || 0} / {project.maxParticipants}
-        </span>
+        <span className="text-xs">{0 / 0}</span>
       </div>
     </Card>
   );
