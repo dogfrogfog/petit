@@ -57,6 +57,8 @@ export const projectData = pgTable("projectData", {
   description: text("description").notNull(),
   url: text("url"),
   companyId: integer("companyId").notNull(),
+  logo: text("projectLogo"),
+  domain: text("domain").notNull(),
 });
 
 export const projectsRelations = relations(projectData, ({ many, one }) => ({
