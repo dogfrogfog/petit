@@ -26,7 +26,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </CardContent>
       </div>
-      <div className="flex shrink-0 flex-col gap-1.5">
+      <div className="flex shrink-0 flex-col gap-1.5 ml-auto">
         <UsersRound />
         <span className="text-xs">0 / 0</span>
       </div>
