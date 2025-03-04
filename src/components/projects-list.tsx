@@ -13,10 +13,7 @@ export function ProjectsList({
 }) {
   const router = useRouter();
 
-  function handleClick(
-    projectId: number,
-    e: React.MouseEvent<HTMLButtonElement>
-  ) {
+  function handleClick(projectId: number, e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
 
     if (!userId) {
@@ -29,11 +26,7 @@ export function ProjectsList({
   return (
     <div className="space-y-4">
       {projects.map((project) => (
-        <button
-          onClick={(e) => handleClick(project.id, e)}
-          key={project.id}
-          className="block"
-        >
+        <button onClick={(e) => handleClick(project.id, e)} key={project.id} className="w-full">
           <ProjectCard project={project} />
         </button>
       ))}
