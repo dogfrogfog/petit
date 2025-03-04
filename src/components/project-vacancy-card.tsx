@@ -30,7 +30,7 @@ export function ProjectVacancyCard({
   deleteVacancyData?: (id: number) => void;
 }) {
   return (
-    <Card className="overflow-hidden">
+    <Card>
       <CardHeader className="flex flex-wrap flex-row justify-between items-center gap-2 space-y-0">
         <div className="gap-2 items-center flex">
           <p className="font-semibold text-md">{vacancy.name}</p>
