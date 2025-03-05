@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Navigation } from "@/components/navigation";
 import "./globals.css";
+import { Sidemenu } from "@/components/sidemenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,10 +38,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} relative antialiased p-4 min-h-screen`}
+          className={`${geistSans.variable} ${geistMono.variable} relative antialiased min-h-screen`}
         >
-          <Navigation />
-          {children}
+          <div className="flex">
+            <Sidemenu />
+            <main className="flex-1">{children}</main>
+          </div>
         </body>
       </html>
     </ClerkProvider>
