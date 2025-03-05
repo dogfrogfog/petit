@@ -1,40 +1,35 @@
 "use client";
 
-import { Card, CardHeader, CardContent } from "./ui/card";
-// import { Badge } from "./ui/badge";
+import Image from "next/image";
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "./ui/card";
+import { ProjectData } from "@/lib/actions/project-data";
+import { Badge } from "./ui/badge";
+import { UsersRound } from "lucide-react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function ProjectCard({ project }: { project: any }) {
+type ProjectCardProps = {
+  project: Omit<ProjectData, "companyId" | "createdAt" | "updatedAt"> & { domain: string };
+};
+
+export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden">
-      <CardHeader className="flex flex-wrap flex-row justify-between gap-2 space-y-0">
-        <div className="gap-2 items-center flex">
-          <p className="font-semibold text-md">{project.name}</p>
-        </div>
-        {/* <Badge
-          variant={project.status === "open" ? "success" : "destructive"}
-          className="capitalize"
-        >
-          {project.status}
-        </Badge> */}
-      </CardHeader>
-      <CardContent className="space-y-4 text-left">
-        {project.url && (
-          <div className="space-y-0">
-            <p className="text-sm">Ссылка на проект</p>
-            <p className="text-sm text-muted-foreground">
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                {project.url}
-              </a>
-            </p>
+    <Card className="flex items-center gap-4 px-3">
+      <Image className="shrink-0 rounded-full" src={"/project-logo.webp"} alt="" width={68} height={68} />
+      <div className="flex flex-col gap-2">
+        <CardHeader className="text-start">
+          <CardTitle>{project.name}</CardTitle>
+          {project.url && <CardDescription className="truncate">{project.url}</CardDescription>}
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          <p className="line-clamp-2 text-start text-xs font-normal text-zinc-500">{project.description}</p>
+          <div className="flex gap-2">
+            <Badge>{project.domain}</Badge>
           </div>
-        )}
-
-        <div className="space-y-0">
-          <p className="text-sm">Описание</p>
-          <p className="text-sm text-muted-foreground">{project.description}</p>
-        </div>
-      </CardContent>
+        </CardContent>
+      </div>
+      <div className="flex shrink-0 flex-col gap-1.5 ml-auto">
+        <UsersRound />
+        <span className="text-xs">0 / 0</span>
+      </div>
     </Card>
   );
 }
