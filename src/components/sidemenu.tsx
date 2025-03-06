@@ -90,46 +90,46 @@ export function Sidemenu() {
 
   return (
     <SidebarProvider>
-      <Sidebar className="w-[15vw] h-screen border-r">
-        <SignedIn>
-          <SidebarContent>
-            {/* Основное */}
-            <SidebarGroup>
-              <div className="text-lg font-bold px-4">Основное</div>
-              <nav className="space-y-2 p-4">
-                <div>
-                  <Link
-                    href="/projects"
-                    className="flex items-center gap-2 w-full rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
-                  >
-                    <LayoutGrid />
-                    <span>Проекты</span>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="/vacancies"
-                    className="flex items-center gap-2 w-full rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
-                  >
-                    <NotepadText />
-                    <span>Вакансии</span>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="/companies"
-                    className="flex items-center gap-2 w-full rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
-                  >
-                    <UsersRound />
-                    <span>Участники</span>
-                  </Link>
-                </div>
-              </nav>
-            </SidebarGroup>
+      <Sidebar className="w-[15vw] h-screen border-r fixed">
+        <SidebarContent>
+          {/* Основное */}
+          <SidebarGroup>
+            <div className="text-lg font-bold px-4 truncate">Основное</div>
+            <nav className="space-y-2 p-4">
+              <div>
+                <Link
+                  href="/projects"
+                  className="flex items-center gap-2 w-full rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
+                >
+                  <LayoutGrid className="flex-none" />
+                  <span className="truncate">Проекты</span>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href="/vacancies"
+                  className="flex items-center gap-2 w-full rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
+                >
+                  <NotepadText className="flex-none" />
+                  <span className="truncate">Вакансии</span>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href="/companies"
+                  className="flex items-center gap-2 w-full rounded-md p-2 hover:bg-accent hover:text-accent-foreground"
+                >
+                  <UsersRound className="flex-none" />
+                  <span className="truncate">Участники</span>
+                </Link>
+              </div>
+            </nav>
+          </SidebarGroup>
 
-            {/* Мои проекты */}
+          {/* Мои проекты */}
+          <SignedIn>
             <SidebarGroup>
-              <div className="text-lg font-bold px-4">Мои проекты</div>
+              <div className="text-lg font-bold px-4 truncate">Мои проекты</div>
               <SidebarMenu className="p-4">
                 {projects.map((project) => (
                   <Collapsible
@@ -139,7 +139,7 @@ export function Sidemenu() {
                   >
                     <SidebarMenuItem>
                       <CollapsibleTrigger asChild>
-                        <SidebarMenuButton className="text-base flex items-center space-x-4 cursor-pointer hover:bg-accent w-full">
+                        <SidebarMenuButton className="text-base flex items-center space-x-4 cursor-pointer hover:bg-accent w-full truncate">
                           {project.name}
                         </SidebarMenuButton>
                       </CollapsibleTrigger>
@@ -158,8 +158,8 @@ export function Sidemenu() {
                 ))}
               </SidebarMenu>
             </SidebarGroup>
-          </SidebarContent>
-        </SignedIn>
+          </SignedIn>
+        </SidebarContent>
 
         <SidebarFooter className="p-4 space-y-4">
           {/* Пользователь */}
@@ -169,11 +169,11 @@ export function Sidemenu() {
                 <DropdownMenuTrigger asChild>
                   <Card className="flex items-center space-x-4 p-3 cursor-pointer hover:bg-accent w-full">
                     <HeaderLogin />
-                    <CardContent className="p-0 flex flex-col justify-center">
-                      <div className="text-sm font-medium">
+                    <CardContent className="p-0 flex flex-col justify-center min-w-0">
+                      <div className="text-sm font-medium truncate">
                         {user?.fullName}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-gray-500 truncate">
                         {user?.primaryEmailAddress?.emailAddress}
                       </div>
                     </CardContent>
@@ -181,28 +181,28 @@ export function Sidemenu() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="start"
-                  className="w-[calc(15vw-2rem)]"
+                  className="w-[14rem]"
                   sideOffset={0}
                 >
                   <DropdownMenuItem
                     className="flex items-center gap-2 w-full rounded-md p-2"
                     onClick={handleProfileClick}
                   >
-                    <User />
+                    <User className="flex-none" />
                     <span>Профиль</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     className="flex items-center gap-2 w-full rounded-md p-2"
                     onClick={handleUpdatesClick}
                   >
-                    <Rss />
+                    <Rss className="flex-none" />
                     <span>Обновления</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     className="flex items-center gap-2 w-full rounded-md p-2"
                     onClick={handleLogoutClick}
                   >
-                    <LogOut />
+                    <LogOut className="flex-none" />
                     <span>Выход</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

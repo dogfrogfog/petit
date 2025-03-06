@@ -39,7 +39,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} relative antialiased min-h-screen`}
         >
-          <div className="flex">
+          <div className="flex  overflow-x-hidden">
             <Sidemenu />
             <main className="flex-1">{children}</main>
           </div>
