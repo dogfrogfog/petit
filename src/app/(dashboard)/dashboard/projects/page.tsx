@@ -1,4 +1,3 @@
-import { getCompanyProjectsData } from "@/lib/actions/project-data";
 import { getCompanyData } from "@/lib/actions/company-data";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
@@ -10,14 +9,11 @@ export default async function Page() {
     redirect("/sign-in");
   }
 
-  const company = await getCompanyData(userId);
+  const { company, projects } = await getCompanyData(userId, true);
 
-  if (company.length === 0) {
+  if (!company) {
     redirect("/dashboard/company/create");
   }
-
-  const oneCommpany = company[0];
-  const projects = await getCompanyProjectsData(oneCommpany.id);
 
   return (
     <div className="max-w-2xl mx-auto p-4">
